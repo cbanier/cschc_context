@@ -8,9 +8,10 @@ from utils import int_to_2_bytes, byte_length
 class Context:
     def __init__(self, json_data: Dict) -> None:
         self.microschc_context: Dict = json_data
-        self.rule_descriptors, self.rule_field_descriptors, self.target_values = extract_informations_from_json(json_data)
         self.cschc_context: List[int] = []
         self.is_formatted: bool = False
+        self.rule_descriptors, self.rule_field_descriptors,\
+            self.target_values = extract_informations_from_json(json_data)
 
     
     def compute_cschc_context(self) -> None:
@@ -57,7 +58,10 @@ class Context:
             )   
 
             if self.rule_field_descriptors[i]['matching_operator'] == 'MSB':
-                self.cschc_context += int_to_2_bytes(self.target_values[self.rule_field_descriptors[i]['target_value'][0]]['length'])
+                self.cschc_context \
+                    += int_to_2_bytes(
+                        self.target_values[self.rule_field_descriptors[i]['target_value'][0]]['length']
+                    )
 
             if self.rule_field_descriptors[i]['matching_operator'] == 'match-mapping':
                 card_rfd: int = len(self.rule_field_descriptors[i]['target_value'])
@@ -72,7 +76,9 @@ class Context:
         # CSCHC Target Values
         for tv in self.target_values:
             tv['offset'] = len(self.cschc_context)
-            self.cschc_context += [int(tv['content'][i:i + 2], 16) for i in range(0, byte_length(tv['length']) * 2, 2)] # convert hex to int
+            self.cschc_context \
+                += [int(tv['content'][i:i + 2], 16)\
+                    for i in range(0, byte_length(tv['length']) * 2, 2)] # convert hex to int
 
         return
     
@@ -81,25 +87,39 @@ class Context:
         rule_descriptor_context_offset: int = 2
 
         for rule_descriptor in self.rule_descriptors:
-            self.cschc_context[rule_descriptor_context_offset], self.cschc_context[rule_descriptor_context_offset + 1] = int_to_2_bytes(rule_descriptor['offset'])
+            self.cschc_context[rule_descriptor_context_offset],\
+                self.cschc_context[rule_descriptor_context_offset + 1]\
+                    = int_to_2_bytes(rule_descriptor['offset'])
+            
             rule_descriptor_context_offset += 2
             rule_field_descriptor_context_offset: int = rule_descriptor['offset'] + 2
 
             if self.cschc_context[rule_field_descriptor_context_offset] > 0: # RuleNature is Compression
                 
                 for i, index_rule_field_descriptor in enumerate(rule_descriptor['field_descriptors'], start=1):
-                    self.cschc_context[rule_field_descriptor_context_offset + i * 2 - 1], self.cschc_context[rule_field_descriptor_context_offset + i * 2] = int_to_2_bytes(self.rule_field_descriptors[index_rule_field_descriptor]['offset'])
-                    target_value_context_offset: int = self.rule_field_descriptors[index_rule_field_descriptor]['offset'] + 7
+                    self.cschc_context[rule_field_descriptor_context_offset + i * 2 - 1],\
+                        self.cschc_context[rule_field_descriptor_context_offset + i * 2]\
+                            = int_to_2_bytes(self.rule_field_descriptors[index_rule_field_descriptor]['offset'])
+                    
+                    target_value_context_offset: int\
+                        = self.rule_field_descriptors[index_rule_field_descriptor]['offset'] + 7
 
                     if self.rule_field_descriptors[index_rule_field_descriptor]['matching_operator'] == 'MSB':
                         target_value_context_offset += 2
                     
                     if self.cschc_context[target_value_context_offset] > 0: # if 0 then no 'target_value' key
 
-                        for j, index_target_value in enumerate(self.rule_field_descriptors[index_rule_field_descriptor]['target_value'], start=1):
-                            self.cschc_context[target_value_context_offset + j * 2 - 1], self.cschc_context[target_value_context_offset + j * 2] = int_to_2_bytes(self.target_values[index_target_value]['offset'])
+                        for j, index_target_value in\
+                              enumerate(
+                                    self.rule_field_descriptors[index_rule_field_descriptor]['target_value'],\
+                                    start=1
+                            ):
+                            self.cschc_context[target_value_context_offset + j * 2 - 1],\
+                                self.cschc_context[target_value_context_offset + j * 2]\
+                                    = int_to_2_bytes(self.target_values[index_target_value]['offset'])
 
         self.is_formatted = True
+        
         return
 
 
