@@ -6,13 +6,17 @@ from utils import split_uint16_into_2_uint8, byte_length
 
 
 class Context:
-    def __init__(self, json_data: Dict) -> None:
+    def __init__(self, json_data: Dict, auto_format: bool = False) -> None:
         self.microschc_context: Dict = json_data
         self.cschc_context: List[int] = []
-        self.is_formatted: bool = False
         self.rule_descriptors, self.rule_field_descriptors,\
             self.target_values = extract_informations_from_json(json_data)
         
+        self.is_formatted: bool = False
+
+        if auto_format:
+            self.compute_cschc_context()
+
         return
 
     
@@ -23,10 +27,14 @@ class Context:
         return
 
 
-    def display_cschc_context(self) -> None:
+    def display_cschc_context(self, hex_format: bool = False) -> None:
         if not self.is_formatted:
             self.compute_cschc_context()
-        print(self.__string_cschc_context())
+        
+        if hex_format:
+            print(self.hexadecimal_cschc_context())
+        else:
+            print(self.string_cschc_context())
         
         return
 
@@ -130,7 +138,7 @@ class Context:
         return
 
 
-    def __string_cschc_context(self) -> str:
+    def string_cschc_context(self) -> str:
         output: str = '{\n\t// Context\n\t'
         
         # CSCHC Context
@@ -196,3 +204,6 @@ class Context:
         output += '\n}'
         
         return output
+    
+    def hexadecimal_cschc_context(self) -> str:
+        return ''.join(format(x, '02x') for x in self.cschc_context)
