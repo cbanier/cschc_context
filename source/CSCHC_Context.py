@@ -2,7 +2,7 @@ from typing import Dict, List
 
 from CSCHC_maps import *
 from microschc_interpreter import extract_informations_from_json
-from utils import int_to_2_bytes, byte_length
+from utils import split_uint16_into_2_uint8, byte_length
 
 
 class Context:
@@ -12,11 +12,15 @@ class Context:
         self.is_formatted: bool = False
         self.rule_descriptors, self.rule_field_descriptors,\
             self.target_values = extract_informations_from_json(json_data)
+        
+        return
 
     
     def compute_cschc_context(self) -> None:
         self.__create_cschc_context()
         self.__update_offset()
+
+        return
 
 
     def display_cschc_context(self) -> None:
@@ -27,7 +31,7 @@ class Context:
         return
 
 
-    def __create_cschc_context(self):
+    def __create_cschc_context(self) -> None:
         # CSCHC Context
         self.cschc_context.append(self.microschc_context['id'])
         self.cschc_context.append(card_rd := len(self.rule_descriptors))
@@ -48,9 +52,9 @@ class Context:
         for i in range(len(self.rule_field_descriptors)):
             self.rule_field_descriptors[i]['offset'] = len(self.cschc_context)
 
-            self.cschc_context += int_to_2_bytes(SID_Map[self.rule_field_descriptors[i]['id']])
-            self.cschc_context += int_to_2_bytes(self.rule_field_descriptors[i]['length'])
-            self.cschc_context += int_to_2_bytes(self.rule_field_descriptors[i]['position'])
+            self.cschc_context += split_uint16_into_2_uint8(SID_Map[self.rule_field_descriptors[i]['id']])
+            self.cschc_context += split_uint16_into_2_uint8(self.rule_field_descriptors[i]['length'])
+            self.cschc_context += split_uint16_into_2_uint8(self.rule_field_descriptors[i]['position'])
             self.cschc_context.append(
                 (DirectionIndicator_Map[self.rule_field_descriptors[i]['direction']] << 5) |\
                 (MatchingOperator_Map[self.rule_field_descriptors[i]['matching_operator']] << 3) |\
@@ -59,7 +63,7 @@ class Context:
 
             if self.rule_field_descriptors[i]['matching_operator'] == 'MSB':
                 self.cschc_context \
-                    += int_to_2_bytes(
+                    += split_uint16_into_2_uint8(
                         self.target_values[self.rule_field_descriptors[i]['target_value'][0]]['length']
                     )
 
@@ -76,20 +80,23 @@ class Context:
         # CSCHC Target Values
         for tv in self.target_values:
             tv['offset'] = len(self.cschc_context)
-            self.cschc_context \
-                += [int(tv['content'][i:i + 2], 16)\
-                    for i in range(0, byte_length(tv['length']) * 2, 2)] # convert hex to int
+
+            if tv['content'] != '':
+                # Convert str to int (in hexadecimal)
+                self.cschc_context \
+                    += [int(tv['content'][i:i + 2], 16)\
+                        for i in range(0, byte_length(tv['length']) * 2, 2)]
 
         return
     
 
-    def __update_offset(self):
+    def __update_offset(self) -> None:
         rule_descriptor_context_offset: int = 2
 
         for rule_descriptor in self.rule_descriptors:
             self.cschc_context[rule_descriptor_context_offset],\
                 self.cschc_context[rule_descriptor_context_offset + 1]\
-                    = int_to_2_bytes(rule_descriptor['offset'])
+                    = split_uint16_into_2_uint8(rule_descriptor['offset'])
             
             rule_descriptor_context_offset += 2
             rule_field_descriptor_context_offset: int = rule_descriptor['offset'] + 2
@@ -99,7 +106,7 @@ class Context:
                 for i, index_rule_field_descriptor in enumerate(rule_descriptor['field_descriptors'], start=1):
                     self.cschc_context[rule_field_descriptor_context_offset + i * 2 - 1],\
                         self.cschc_context[rule_field_descriptor_context_offset + i * 2]\
-                            = int_to_2_bytes(self.rule_field_descriptors[index_rule_field_descriptor]['offset'])
+                            = split_uint16_into_2_uint8(self.rule_field_descriptors[index_rule_field_descriptor]['offset'])
                     
                     target_value_context_offset: int\
                         = self.rule_field_descriptors[index_rule_field_descriptor]['offset'] + 7
@@ -116,7 +123,7 @@ class Context:
                             ):
                             self.cschc_context[target_value_context_offset + j * 2 - 1],\
                                 self.cschc_context[target_value_context_offset + j * 2]\
-                                    = int_to_2_bytes(self.target_values[index_target_value]['offset'])
+                                    = split_uint16_into_2_uint8(self.target_values[index_target_value]['offset'])
 
         self.is_formatted = True
         
@@ -126,7 +133,7 @@ class Context:
     def __string_cschc_context(self) -> str:
         output: str = '{\n\t// Context\n\t'
         
-        # Context
+        # CSCHC Context
         offset: int  = 0
         card_rd: int = len(self.rule_descriptors)
 
@@ -134,7 +141,7 @@ class Context:
             output += f'{self.cschc_context[offset]}, '
             offset += 1
         
-        # Rule Descriptor
+        # CSCHC Rule Descriptor
         output += '\n\n\t// Rule Descriptors\n'
             
         for i in range(card_rd):
@@ -153,7 +160,7 @@ class Context:
 
             output += f' // Rule Descriptor n° {i}\n'
 
-        # Rule Field Descriptor
+        # CSCHC Rule Field Descriptors
         output += '\n\t// Rule Field Descriptors\n'
 
         card_rfd: int = len(self.rule_field_descriptors)
@@ -174,7 +181,7 @@ class Context:
                     
             output += f' // Rule Field Descriptor n° {i}\n'
               
-        # Target Value
+        # CSCHC Target Values
         output += '\n\t// Target Values\n\t'
         
         next_offset = len(self.cschc_context)
