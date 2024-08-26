@@ -152,7 +152,7 @@
                         "padding": "left"
                     },
                     "matching_operator": "ignore",
-                    "compression_decompression_action": "value-sent"
+                    "compression_decompression_action": "compute"
                 },
                 {
                     "id": "IPv6:Next Header",
@@ -295,7 +295,7 @@
                         "padding": "left"
                     },
                     "matching_operator": "ignore",
-                    "compression_decompression_action": "value-sent"
+                    "compression_decompression_action": "compute"
                 },
                 {
                     "id": "UDP:Checksum",
@@ -308,7 +308,7 @@
                         "padding": "left"
                     },
                     "matching_operator": "ignore",
-                    "compression_decompression_action": "value-sent"
+                    "compression_decompression_action": "compute"
                 },
                 {
                     "id": "CoAP:Version",
@@ -790,7 +790,7 @@
                         "padding": "left"
                     },
                     "matching_operator": "ignore",
-                    "compression_decompression_action": "value-sent"
+                    "compression_decompression_action": "compute"
                 },
                 {
                     "id": "IPv6:Next Header",
@@ -933,7 +933,7 @@
                         "padding": "left"
                     },
                     "matching_operator": "ignore",
-                    "compression_decompression_action": "value-sent"
+                    "compression_decompression_action": "compute"
                 },
                 {
                     "id": "UDP:Checksum",
@@ -946,7 +946,7 @@
                         "padding": "left"
                     },
                     "matching_operator": "ignore",
-                    "compression_decompression_action": "value-sent"
+                    "compression_decompression_action": "compute"
                 },
                 {
                     "id": "CoAP:Version",
@@ -1359,7 +1359,7 @@
                         "padding": "left"
                     },
                     "matching_operator": "ignore",
-                    "compression_decompression_action": "value-sent"
+                    "compression_decompression_action": "compute"
                 },
                 {
                     "id": "IPv6:Next Header",
@@ -1502,7 +1502,7 @@
                         "padding": "left"
                     },
                     "matching_operator": "ignore",
-                    "compression_decompression_action": "value-sent"
+                    "compression_decompression_action": "compute"
                 },
                 {
                     "id": "UDP:Checksum",
@@ -1515,7 +1515,7 @@
                         "padding": "left"
                     },
                     "matching_operator": "ignore",
-                    "compression_decompression_action": "value-sent"
+                    "compression_decompression_action": "compute"
                 },
                 {
                     "id": "CoAP:Version",
@@ -1883,7 +1883,7 @@
                         "padding": "left"
                     },
                     "matching_operator": "ignore",
-                    "compression_decompression_action": "value-sent"
+                    "compression_decompression_action": "compute"
                 },
                 {
                     "id": "IPv6:Next Header",
@@ -2026,7 +2026,7 @@
                         "padding": "left"
                     },
                     "matching_operator": "ignore",
-                    "compression_decompression_action": "value-sent"
+                    "compression_decompression_action": "compute"
                 },
                 {
                     "id": "UDP:Checksum",
@@ -2039,7 +2039,7 @@
                         "padding": "left"
                     },
                     "matching_operator": "ignore",
-                    "compression_decompression_action": "value-sent"
+                    "compression_decompression_action": "compute"
                 },
                 {
                     "id": "CoAP:Version",
