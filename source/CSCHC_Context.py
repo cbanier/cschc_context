@@ -1,8 +1,8 @@
 from typing import Dict, List
 
-from CSCHC_maps import *
-from microschc_interpreter import extract_informations_from_json
-from utils import split_uint16_into_2_uint8, byte_length
+from source.CSCHC_maps import *
+from source.microschc_interpreter import extract_informations_from_json
+from source.utils import split_uint16_into_2_uint8, byte_length
 
 
 class Context:
