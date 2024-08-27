@@ -5,7 +5,7 @@ Date: 2024-08-27
 
 # CSCHC Context
 
-## [master branch](https://github.com/cbanier/cschc_context/tree/master)
+## CSCHC Context Builder
 
 ### Overview
 
@@ -17,7 +17,7 @@ Date: 2024-08-27
 - Converts JSON Context from `microschc` to a format compatible with `cschc`, i.e., a list of `uint8_t`.
 - Ensures seamless integration between `microschc` and `cschc`.
 
-## [draft-schc-yang branch](https://github.com/cbanier/cschc_context/tree/draft-schc-yang)
+## POC SCHC Yang Model
 
 ### Overview
 
