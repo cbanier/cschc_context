@@ -1,0 +1,194 @@
+{
+    "draft-ietf-schc:schc" : {
+        "rule" : [
+            {
+                "rule-id-length" : 3,
+                "rule-id-value" : 0,
+                "rule-nature" : "draft-ietf-schc:nature-compression",
+                "rule-entry-id" : [
+                    0, 1, 4, 6, 7, 8
+                ]
+            },
+            {
+                "rule-id-length" : 3,
+                "rule-id-value" : 1,
+                "rule-nature" : "draft-ietf-schc:nature-compression",
+                "rule-entry-id" : [
+                    0, 2, 4, 6, 7, 8
+                ]
+            },
+            {
+                "rule-id-length" : 3,
+                "rule-id-value" : 2,
+                "rule-nature" : "draft-ietf-schc:nature-compression",
+                "rule-entry-id" : [
+                    0, 3, 4, 6, 7, 8
+                ]
+            },
+            {
+                "rule-id-length" : 3,
+                "rule-id-value" : 3,
+                "rule-nature" : "draft-ietf-schc:nature-compression",
+                "rule-entry-id" : [
+                    0, 3, 5, 6, 7, 8
+                ]
+            },
+            {
+                "rule-id-length" : 3,
+                "rule-id-value" : 4,
+                "rule-nature" : "draft-ietf-schc:nature-no-compression"
+            }
+        ],
+        "entry" : [
+            {
+                "entry-id-value" : 0,
+                "field-id" : "ietf-schc:fid-ipv6-version",
+                "field-length" : 4,
+                "field-position" : 1,
+                "direction-indicator" : "ietf-schc:di-bidirectional",
+                "matching-operator" : "ietf-schc:mo-equal",
+                "comp-decomp-action" : "ietf-schc:cda-not-sent",
+                "target-value-id" : [
+                    0
+                ]
+            },
+            {
+                "entry-id-value" : 1,
+                "field-id" : "ietf-schc:fid-ipv6-trafficclass",
+                "field-length" : 8,
+                "field-position" : 1,
+                "direction-indicator": "ietf-schc:di-bidirectional",
+                "matching-operator" : "ietf-schc:mo-match-mapping",
+                "comp-decomp-action" : "ietf-schc:cda-mapping-sent",
+                "target-value-id" : [
+                    1, 2, 3, 4
+                ]
+            },
+            {
+                "entry-id-value" : 2,
+                "field-id" : "ietf-schc:fid-ipv6-trafficclass",
+                "field-length" : 8,
+                "field-position" : 1,
+                "direction-indicator": "ietf-schc:di-bidirectional",
+                "matching-operator" : "ietf-schc:mo-msb",
+                "comp-decomp-action" : "ietf-schc:cda-lsb",
+                "target-value-id" : [
+                    5
+                ]
+            },
+            {
+                "entry-id-value" : 3,
+                "field-id" : "ietf-schc:fid-ipv6-trafficclass",
+                "field-length" : 8,
+                "field-position" : 1,
+                "direction-indicator": "ietf-schc:di-bidirectional",
+                "matching-operator" : "ietf-schc:mo-ignore",
+                "comp-decomp-action" : "ietf-schc:cda-value-sent"
+            },
+            {
+                "entry-id-value" : 4,
+                "field-id" : "ietf-schc:fid-ipv6-flowlabel",
+                "field-length" : 20,
+                "field-position" : 1,
+                "direction-indicator": "ietf-schc:di-bidirectional",
+                "matching-operator" : "ietf-schc:mo-match-mapping",
+                "comp-decomp-action" : "ietf-schc:cda-mapping-sent",
+                "target-value-id" : [
+                    6, 7, 8, 9
+                ]
+            },
+            {
+                "entry-id-value" : 5,
+                "field-id" : "ietf-schc:fid-ipv6-flowlabel",
+                "field-length" : 20,
+                "field-position" : 1,
+                "direction-indicator": "ietf-schc:di-bidirectional",
+                "matching-operator" : "ietf-schc:mo-ignore",
+                "comp-decomp-action" : "ietf-schc:cda-value-sent"
+            }, 
+            {
+                "entry-id-value" : 6,
+                "field-id" : "ietf-schc:fid-ipv6-payload-length",
+                "field-length" : 16,
+                "field-position" : 1,
+                "direction-indicator": "ietf-schc:di-bidirectional",
+                "matching-operator" : "ietf-schc:mo-ignore",
+                "comp-decomp-action" : "ietf-schc:cda-compute"
+            },
+            {
+                "entry-id-value" : 7,
+                "field-id" : "ietf-schc:fid-ipv6-nextheader",
+                "field-length" : 8,
+                "field-position" : 1,
+                "direction-indicator": "ietf-schc:di-bidirectional",
+                "matching-operator" : "ietf-schc:mo-equal",
+                "comp-decomp-action" : "ietf-schc:cda-not-sent",
+                "target-value-id" : [
+                    10
+                ]
+            },
+            {
+                "entry-id-value" : 8,
+                "field-id" : "ietf-schc:fid-ipv6-hoplimit",
+                "field-length" : 8,
+                "field-position" : 1,
+                "direction-indicator": "ietf-schc:di-bidirectional",
+                "matching-operator" : "ietf-schc:mo-equal",
+                "comp-decomp-action" : "ietf-schc:cda-not-sent",
+                "target-value-id" : [
+                    11
+                ]
+            }
+        ],
+        "target_value" : [
+            {
+                "index":0,
+                "value":"Bg=="
+            },
+            {
+                "index": 1,
+                "value": "/w=="
+            },
+            {
+                "index": 2,
+                "value": "/g=="
+            },
+            {
+                "index": 3,
+                "value": "8Q=="
+            },
+            {
+                "index": 4,
+                "value": "9w=="
+            },
+            {
+                "index": 5,
+                "value": "Dw=="
+            },
+            {
+                "index": 6,
+                "value": "AO8t"
+            },
+            {
+                "index": 7,
+                "value": "D/4t"
+            },
+            {
+                "index": 8,
+                "value": "B3d3"
+            },
+            {
+                "index": 9,
+                "value": "D/hf"
+            },
+            {   
+                "index" : 10,
+                "value": "EQ=="
+            },
+            {   
+                "index" : 11,
+                "value": "QA=="
+            }
+        ]
+    }
+}

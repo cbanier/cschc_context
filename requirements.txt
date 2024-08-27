@@ -1,0 +1,4 @@
+cbor2==5.6.4
+lxml==5.3.0
+pyang @ git+https://github.com/ltn22/pyang.git@4b7df99e907bf3aeaa0a989c0e22591ac4ab843c
+pycoreconf==0.0.6

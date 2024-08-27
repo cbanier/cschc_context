@@ -1,0 +1,508 @@
+module draft-ietf-schc {
+  yang-version 1.1;
+  namespace "urn:ietf:params:xml:ns:yang:draft-ietf-schc";
+  prefix draft-ietf-schc;
+
+  // --Field ID type definition
+  
+  identity fid-base-type {
+    description
+      "Field ID base type for all fields.";
+  }
+
+  typedef fid-type {
+    type identityref {
+      base fid-base-type;
+    }
+    description
+      "Field ID generic type.";
+    reference
+      "RFC 8724 SCHC: Generic Framework for Static Context Header
+                Compression and Fragmentation";
+  }
+
+  // --Field ID IPv6
+
+  identity fid-ipv6-base-type {
+    base fid-base-type;
+    description
+      "Field ID base type for IPv6 headers described in RFC 8200.";
+    reference
+      "RFC 8200 Internet Protocol, Version 6 (IPv6) Specification";
+  }
+
+  identity fid-ipv6-version {
+    base fid-ipv6-base-type;
+    description
+      "IPv6 version field.";
+    reference
+      "RFC 8200 Internet Protocol, Version 6 (IPv6) Specification";
+  }
+
+  identity fid-ipv6-trafficclass {
+    base fid-ipv6-base-type;
+    description
+      "IPv6 Traffic Class field.";
+    reference
+      "RFC 8200 Internet Protocol, Version 6 (IPv6) Specification";
+  }
+
+  identity fid-ipv6-trafficclass-ds {
+    base fid-ipv6-trafficclass;
+    description
+      "IPv6 Traffic Class field: Diffserv field.";
+    reference
+      "RFC 8200 Internet Protocol, Version 6 (IPv6) Specification,
+       RFC 3168 The Addition of Explicit Congestion Notification
+                (ECN) to IP";
+  }
+
+  identity fid-ipv6-trafficclass-ecn {
+    base fid-ipv6-trafficclass;
+    description
+      "IPv6 Traffic Class field: ECN field.";
+    reference
+      "RFC 8200 Internet Protocol, Version 6 (IPv6) Specification,
+       RFC 3168 The Addition of Explicit Congestion Notification
+                (ECN) to IP";
+  }
+
+  identity fid-ipv6-flowlabel {
+    base fid-ipv6-base-type;
+    description
+      "IPv6 Flow Label field.";
+    reference
+      "RFC 8200 Internet Protocol, Version 6 (IPv6) Specification";
+  }
+
+  identity fid-ipv6-payload-length {
+    base fid-ipv6-base-type;
+    description
+      "IPv6 Payload Length field.";
+    reference
+      "RFC 8200 Internet Protocol, Version 6 (IPv6) Specification";
+  }
+
+  identity fid-ipv6-nextheader {
+    base fid-ipv6-base-type;
+    description
+      "IPv6 Next Header field.";
+    reference
+      "RFC 8200 Internet Protocol, Version 6 (IPv6) Specification";
+  }
+
+  identity fid-ipv6-hoplimit {
+    base fid-ipv6-base-type;
+    description
+      "IPv6 Next Header field.";
+    reference
+      "RFC 8200 Internet Protocol, Version 6 (IPv6) Specification";
+  }
+
+  identity fid-ipv6-devprefix {
+    base fid-ipv6-base-type;
+    description
+      "Corresponds to either the source address or the destination
+       address prefix of RFC 8200 depending on whether it is an
+       uplink or a downlink message.";
+    reference
+      "RFC 8200 Internet Protocol, Version 6 (IPv6) Specification";
+  }
+
+  identity fid-ipv6-deviid {
+    base fid-ipv6-base-type;
+    description
+      "Corresponds to either the source address or the destination
+       address IID of RFC 8200 depending on whether it is an uplink
+       or a downlink message.";
+    reference
+      "RFC 8200 Internet Protocol, Version 6 (IPv6) Specification";
+  }
+
+  identity fid-ipv6-appprefix {
+    base fid-ipv6-base-type;
+    description
+      "Corresponds to either the source address or the destination
+       address prefix of RFC 8200 depending on whether it is an
+       uplink or a downlink message.";
+    reference
+      "RFC 8200 Internet Protocol, Version 6 (IPv6) Specification";
+  }
+
+  identity fid-ipv6-appiid {
+    base fid-ipv6-base-type;
+    description
+      "Corresponds to either the source address or the destination
+       address IID of RFC 8200 depending on whether it is an uplink
+       or a downlink message.";
+    reference
+      "RFC 8200 Internet Protocol, Version 6 (IPv6) Specification";
+  }
+
+  //---------------------------------
+  // Direction Indicator type
+  //---------------------------------
+
+  identity di-base-type {
+    description
+      "Used to extend Direction Indicators.";
+  }
+
+  typedef di-type {
+    type identityref {
+      base di-base-type;
+    }
+    description
+      "Direction in LPWAN network: up when emitted by the device,
+       down when received by the device, or bi when emitted or
+       received by the device.";
+    reference
+      "RFC 8724 SCHC: Generic Framework for Static Context Header
+                Compression and Fragmentation";
+  }
+
+  identity di-bidirectional {
+    base di-base-type;
+    description
+      "Direction Indicator of bidirectionality.";
+    reference
+      "RFC 8724 SCHC: Generic Framework for Static Context
+                Header Compression and Fragmentation (see
+                Section 7.1)";
+  }
+
+  identity di-up {
+    base di-base-type;
+    description
+      "Direction Indicator of uplink.";
+    reference
+      "RFC 8724 SCHC: Generic Framework for Static Context
+                Header Compression and Fragmentation (see
+                Section 7.1)";
+  }
+
+  identity di-down {
+    base di-base-type;
+    description
+      "Direction Indicator of downlink.";
+    reference
+      "RFC 8724 SCHC: Generic Framework for Static Context
+                Header Compression and Fragmentation (see
+                Section 7.1)";
+  }
+
+  //----------------------------------
+  // Matching Operator type definition
+  //----------------------------------
+
+  identity mo-base-type {
+    description
+      "Matching Operator: used in the Rule selection process
+       to check if a Target Value matches the field's value.";
+    reference
+      "RFC 8724 SCHC: Generic Framework for Static Context
+                Header Compression and Fragmentation (see
+                Section 7.2)";
+  }
+
+  typedef mo-type {
+    type identityref {
+      base mo-base-type;
+    }
+    description
+      "Matching Operator (MO) to compare field values with
+       Target Values.";
+    reference
+      "RFC 8724 SCHC: Generic Framework for Static Context Header
+                Compression and Fragmentation";
+  }
+
+  identity mo-equal {
+    base mo-base-type;
+    description
+      "equal MO.";
+    reference
+      "RFC 8724 SCHC: Generic Framework for Static Context
+                Header Compression and Fragmentation (see
+                Section 7.3)";
+  }
+
+  identity mo-ignore {
+    base mo-base-type;
+    description
+      "ignore MO.";
+    reference
+      "RFC 8724 SCHC: Generic Framework for Static Context
+                Header Compression and Fragmentation (see
+                Section 7.3)";
+  }
+
+  identity mo-msb {
+    base mo-base-type;
+    description
+      "MSB MO.";
+    reference
+      "RFC 8724 SCHC: Generic Framework for Static Context
+                Header Compression and Fragmentation (see
+                Section 7.3)";
+  }
+
+  identity mo-match-mapping {
+    base mo-base-type;
+    description
+      "match-mapping MO.";
+    reference
+      "RFC 8724 SCHC: Generic Framework for Static Context
+                Header Compression and Fragmentation (see
+                Section 7.3)";
+  }
+
+  //------------------------------
+  // CDA type definition
+  //------------------------------
+
+  identity cda-base-type {
+    description
+      "Compression Decompression Actions. Specify the action to
+       be applied to the field's value in a specific Rule.";
+    reference
+      "RFC 8724 SCHC: Generic Framework for Static Context
+                Header Compression and Fragmentation (see
+                Section 7.2)";
+  }
+
+  typedef cda-type {
+    type identityref {
+      base cda-base-type;
+    }
+    description
+      "Compression Decompression Action to compress or
+       decompress a field.";
+    reference
+      "RFC 8724 SCHC: Generic Framework for Static Context Header
+                Compression and Fragmentation";
+  }
+
+  identity cda-not-sent {
+    base cda-base-type;
+    description
+      "not-sent CDA.";
+    reference
+      "RFC 8724 SCHC: Generic Framework for Static Context
+                Header Compression and Fragmentation (see
+                Section 7.4)";
+  }
+
+  identity cda-value-sent {
+    base cda-base-type;
+    description
+      "value-sent CDA.";
+    reference
+      "RFC 8724 SCHC: Generic Framework for Static Context
+                Header Compression and Fragmentation (see
+                Section 7.4)";
+  }
+
+  identity cda-lsb {
+    base cda-base-type;
+    description
+      "Least Significant Bit (LSB) CDA.";
+    reference
+      "RFC 8724 SCHC: Generic Framework for Static Context
+                Header Compression and Fragmentation (see
+                Section 7.4)";
+  }
+
+  identity cda-mapping-sent {
+    base cda-base-type;
+    description
+      "mapping-sent CDA.";
+    reference
+      "RFC 8724 SCHC: Generic Framework for Static Context
+                Header Compression and Fragmentation (see
+                Section 7.4)";
+  }
+
+  identity cda-compute {
+    base cda-base-type;
+    description
+      "compute-* CDA.";
+    reference
+      "RFC 8724 SCHC: Generic Framework for Static Context
+                Header Compression and Fragmentation (see
+                Section 7.4)";
+  }
+
+  identity cda-deviid {
+    base cda-base-type;
+    description
+      "DevIID CDA.";
+    reference
+      "RFC 8724 SCHC: Generic Framework for Static Context
+                Header Compression and Fragmentation (see
+                Section 7.4)";
+  }
+
+  identity cda-appiid {
+    base cda-base-type;
+    description
+      "Application Interface Identifier (AppIID) CDA.";
+    reference
+      "RFC 8724 SCHC: Generic Framework for Static Context
+                Header Compression and Fragmentation (see
+                Section 7.4)";
+  }
+
+  // --Rule nature
+
+  identity nature-base-type {
+    description
+      "A Rule, identified by its RuleID, is used for a single
+       purpose.  RFC 8724 defines 3 natures:
+       compression, no-compression, and fragmentation.";
+    reference
+      "RFC 8724 SCHC: Generic Framework for Static Context Header
+                Compression and Fragmentation (see Section 6)";
+  }
+
+  typedef nature-type {
+    type identityref {
+      base nature-base-type;
+    }
+    description
+      "Defines the type to indicate the nature of the Rule.";
+  }
+
+  identity nature-compression {
+    base nature-base-type;
+    description
+      "Identify a compression Rule.";
+    reference
+      "RFC 8724 SCHC: Generic Framework for Static Context Header
+                Compression and Fragmentation (see Section 6)";
+  }
+
+  identity nature-no-compression {
+    base nature-base-type;
+    description
+      "Identify a no-compression Rule.";
+    reference
+      "RFC 8724 SCHC: Generic Framework for Static Context Header
+                Compression and Fragmentation (see Section 6)";
+  }
+
+  // --SCHC
+
+  container schc {
+    
+    // --Rule Descriptor
+    
+    list rule {
+      key "rule-id-value";
+      
+      leaf rule-id-length {
+        type uint8 {
+          range "0..32";
+        }
+        description
+          "RuleID length, in bits. The value 0 is for implicit Rules.";
+      }
+
+      leaf rule-id-value {
+        type uint32;
+        description
+          "RuleID value. This value must be unique, considering its length.";
+      }
+
+      leaf rule-nature {
+        type nature-type;
+        mandatory true;
+        description
+          "Specify the Rule's nature.";
+      }
+
+      leaf-list rule-entry-id {
+        type uint16;
+        description
+          "List of entry IDs associated with this rule.";
+      }
+    }
+
+    // --Rule Field Descriptor
+    
+    list entry {
+      // --key "entry-id-value";
+      key "field-id field-position direction-indicator";
+
+      leaf entry-id-value {
+        type uint16;
+        description
+          "Entry ID value. This value must be unique.";
+      }
+
+      leaf field-id {
+        type draft-ietf-schc:fid-type;
+        mandatory true;
+        description
+          "Field ID, identify a field in the header with a YANG identity reference.";
+      }
+
+      leaf field-length {
+        type uint16;
+        mandatory true;
+        description
+          "Field Length, expressed in number of bits.";
+      }
+
+      leaf field-position {
+        type uint16;
+        mandatory true;
+        description
+          "Field Position in the header.";
+      }
+
+      leaf direction-indicator {
+        type draft-ietf-schc:di-type;
+        mandatory true;
+        description
+          "Direction Indicator, indicate if this field must be considered for Rule selection or ignored based on the direction.";
+      }
+
+      leaf-list target-value-id {
+        type uint16;
+        description
+          "List of target value IDs associated with this entry.";
+      }
+
+      leaf matching-operator {
+        type draft-ietf-schc:mo-type;
+        mandatory true;
+        description
+          "MO: Matching Operator.";
+        reference
+          "RFC 8724 SCHC: Generic Framework for Static Context Header
+                    Compression and Fragmentation (see Section 7.3)";
+      }
+
+      leaf comp-decomp-action {
+        type draft-ietf-schc:cda-type;
+        description
+          "target-value is not required for some CDA.";
+      }
+    }
+
+    list target_value {
+      key "index";
+      leaf index {
+        type uint16;
+        description
+          "Index gives the position in the matching list.";
+      }
+      leaf value {
+        type binary;
+        description
+          "Target Value content as an untyped binary value.";
+      }
+    }
+  }
+}

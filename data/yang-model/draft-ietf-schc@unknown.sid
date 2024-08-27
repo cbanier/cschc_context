@@ -1,0 +1,357 @@
+{
+  "assignment-range": [
+    {
+      "entry-point": 5000,
+      "size": 300
+    }
+  ],
+  "module-name": "draft-ietf-schc",
+  "module-revision": "unknown",
+  "item": [
+    {
+      "namespace": "module",
+      "identifier": "draft-ietf-schc",
+      "status": "unstable",
+      "sid": 5000
+    },
+    {
+      "namespace": "identity",
+      "identifier": "cda-appiid",
+      "status": "unstable",
+      "sid": 5001
+    },
+    {
+      "namespace": "identity",
+      "identifier": "cda-base-type",
+      "status": "unstable",
+      "sid": 5002
+    },
+    {
+      "namespace": "identity",
+      "identifier": "cda-compute",
+      "status": "unstable",
+      "sid": 5003
+    },
+    {
+      "namespace": "identity",
+      "identifier": "cda-deviid",
+      "status": "unstable",
+      "sid": 5004
+    },
+    {
+      "namespace": "identity",
+      "identifier": "cda-lsb",
+      "status": "unstable",
+      "sid": 5005
+    },
+    {
+      "namespace": "identity",
+      "identifier": "cda-mapping-sent",
+      "status": "unstable",
+      "sid": 5006
+    },
+    {
+      "namespace": "identity",
+      "identifier": "cda-not-sent",
+      "status": "unstable",
+      "sid": 5007
+    },
+    {
+      "namespace": "identity",
+      "identifier": "cda-value-sent",
+      "status": "unstable",
+      "sid": 5008
+    },
+    {
+      "namespace": "identity",
+      "identifier": "di-base-type",
+      "status": "unstable",
+      "sid": 5009
+    },
+    {
+      "namespace": "identity",
+      "identifier": "di-bidirectional",
+      "status": "unstable",
+      "sid": 5010
+    },
+    {
+      "namespace": "identity",
+      "identifier": "di-down",
+      "status": "unstable",
+      "sid": 5011
+    },
+    {
+      "namespace": "identity",
+      "identifier": "di-up",
+      "status": "unstable",
+      "sid": 5012
+    },
+    {
+      "namespace": "identity",
+      "identifier": "fid-base-type",
+      "status": "unstable",
+      "sid": 5013
+    },
+    {
+      "namespace": "identity",
+      "identifier": "fid-ipv6-appiid",
+      "status": "unstable",
+      "sid": 5014
+    },
+    {
+      "namespace": "identity",
+      "identifier": "fid-ipv6-appprefix",
+      "status": "unstable",
+      "sid": 5015
+    },
+    {
+      "namespace": "identity",
+      "identifier": "fid-ipv6-base-type",
+      "status": "unstable",
+      "sid": 5016
+    },
+    {
+      "namespace": "identity",
+      "identifier": "fid-ipv6-deviid",
+      "status": "unstable",
+      "sid": 5017
+    },
+    {
+      "namespace": "identity",
+      "identifier": "fid-ipv6-devprefix",
+      "status": "unstable",
+      "sid": 5018
+    },
+    {
+      "namespace": "identity",
+      "identifier": "fid-ipv6-flowlabel",
+      "status": "unstable",
+      "sid": 5019
+    },
+    {
+      "namespace": "identity",
+      "identifier": "fid-ipv6-hoplimit",
+      "status": "unstable",
+      "sid": 5020
+    },
+    {
+      "namespace": "identity",
+      "identifier": "fid-ipv6-nextheader",
+      "status": "unstable",
+      "sid": 5021
+    },
+    {
+      "namespace": "identity",
+      "identifier": "fid-ipv6-payload-length",
+      "status": "unstable",
+      "sid": 5022
+    },
+    {
+      "namespace": "identity",
+      "identifier": "fid-ipv6-trafficclass",
+      "status": "unstable",
+      "sid": 5023
+    },
+    {
+      "namespace": "identity",
+      "identifier": "fid-ipv6-trafficclass-ds",
+      "status": "unstable",
+      "sid": 5024
+    },
+    {
+      "namespace": "identity",
+      "identifier": "fid-ipv6-trafficclass-ecn",
+      "status": "unstable",
+      "sid": 5025
+    },
+    {
+      "namespace": "identity",
+      "identifier": "fid-ipv6-version",
+      "status": "unstable",
+      "sid": 5026
+    },
+    {
+      "namespace": "identity",
+      "identifier": "mo-base-type",
+      "status": "unstable",
+      "sid": 5027
+    },
+    {
+      "namespace": "identity",
+      "identifier": "mo-equal",
+      "status": "unstable",
+      "sid": 5028
+    },
+    {
+      "namespace": "identity",
+      "identifier": "mo-ignore",
+      "status": "unstable",
+      "sid": 5029
+    },
+    {
+      "namespace": "identity",
+      "identifier": "mo-match-mapping",
+      "status": "unstable",
+      "sid": 5030
+    },
+    {
+      "namespace": "identity",
+      "identifier": "mo-msb",
+      "status": "unstable",
+      "sid": 5031
+    },
+    {
+      "namespace": "identity",
+      "identifier": "nature-base-type",
+      "status": "unstable",
+      "sid": 5032
+    },
+    {
+      "namespace": "identity",
+      "identifier": "nature-compression",
+      "status": "unstable",
+      "sid": 5033
+    },
+    {
+      "namespace": "identity",
+      "identifier": "nature-no-compression",
+      "status": "unstable",
+      "sid": 5034
+    },
+    {
+      "namespace": "data",
+      "identifier": "/draft-ietf-schc:schc",
+      "status": "unstable",
+      "sid": 5035
+    },
+    {
+      "namespace": "data",
+      "identifier": "/draft-ietf-schc:schc/entry",
+      "status": "unstable",
+      "sid": 5036
+    },
+    {
+      "namespace": "data",
+      "identifier": "/draft-ietf-schc:schc/entry/comp-decomp-action",
+      "status": "unstable",
+      "sid": 5037,
+      "type": "identityref"
+    },
+    {
+      "namespace": "data",
+      "identifier": "/draft-ietf-schc:schc/entry/direction-indicator",
+      "status": "unstable",
+      "sid": 5038,
+      "type": "identityref"
+    },
+    {
+      "namespace": "data",
+      "identifier": "/draft-ietf-schc:schc/entry/entry-id-value",
+      "status": "unstable",
+      "sid": 5039,
+      "type": "uint16"
+    },
+    {
+      "namespace": "data",
+      "identifier": "/draft-ietf-schc:schc/entry/field-id",
+      "status": "unstable",
+      "sid": 5040,
+      "type": "identityref"
+    },
+    {
+      "namespace": "data",
+      "identifier": "/draft-ietf-schc:schc/entry/field-length",
+      "status": "unstable",
+      "sid": 5041,
+      "type": "uint16"
+    },
+    {
+      "namespace": "data",
+      "identifier": "/draft-ietf-schc:schc/entry/field-position",
+      "status": "unstable",
+      "sid": 5042,
+      "type": "uint16"
+    },
+    {
+      "namespace": "data",
+      "identifier": "/draft-ietf-schc:schc/entry/matching-operator",
+      "status": "unstable",
+      "sid": 5043,
+      "type": "identityref"
+    },
+    {
+      "namespace": "data",
+      "identifier": "/draft-ietf-schc:schc/entry/target-value-id",
+      "status": "unstable",
+      "sid": 5044,
+      "type": "uint16"
+    },
+    {
+      "namespace": "data",
+      "identifier": "/draft-ietf-schc:schc/rule",
+      "status": "unstable",
+      "sid": 5045
+    },
+    {
+      "namespace": "data",
+      "identifier": "/draft-ietf-schc:schc/rule/rule-entry-id",
+      "status": "unstable",
+      "sid": 5046,
+      "type": "uint16"
+    },
+    {
+      "namespace": "data",
+      "identifier": "/draft-ietf-schc:schc/rule/rule-id-length",
+      "status": "unstable",
+      "sid": 5047,
+      "type": "uint8"
+    },
+    {
+      "namespace": "data",
+      "identifier": "/draft-ietf-schc:schc/rule/rule-id-value",
+      "status": "unstable",
+      "sid": 5048,
+      "type": "uint32"
+    },
+    {
+      "namespace": "data",
+      "identifier": "/draft-ietf-schc:schc/rule/rule-nature",
+      "status": "unstable",
+      "sid": 5049,
+      "type": "identityref"
+    },
+    {
+      "namespace": "data",
+      "identifier": "/draft-ietf-schc:schc/target_value",
+      "status": "unstable",
+      "sid": 5050
+    },
+    {
+      "namespace": "data",
+      "identifier": "/draft-ietf-schc:schc/target_value/index",
+      "status": "unstable",
+      "sid": 5051,
+      "type": "uint16"
+    },
+    {
+      "namespace": "data",
+      "identifier": "/draft-ietf-schc:schc/target_value/value",
+      "status": "unstable",
+      "sid": 5052,
+      "type": "binary"
+    }
+  ],
+  "key-mapping": {
+    "5045": [
+      5048
+    ],
+    "5036": [
+      5040,
+      5042,
+      5038
+    ],
+    "5050": [
+      5051
+    ]
+  }
+}

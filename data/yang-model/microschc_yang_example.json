@@ -1,0 +1,548 @@
+{
+    "id": 0,
+    "description": "",
+    "interface_id": "",
+    "parser_id": "",
+    "ruleset": [
+        {
+            "id": {
+                "content": "00",
+                "length": 3,
+                "padding": "left"
+            },
+            "nature": "compression",
+            "field_descriptors": [
+                {
+                    "id": "IPv6:Version",
+                    "length": 4,
+                    "position": 1,
+                    "direction": "Bi",
+                    "target_value": {
+                        "content": "06",
+                        "length": 4,
+                        "padding": "left"
+                    },
+                    "matching_operator": "equal",
+                    "compression_decompression_action": "not-sent"
+                },
+                {
+                    "id": "IPv6:Traffic Class",
+                    "length": 8,
+                    "position": 1,
+                    "direction": "Bi",
+                    "target_value": [
+                        {
+                            "index": {
+                                "content": "00",
+                                "length": 2,
+                                "padding": "left"
+                            },
+                            "value": {
+                                "content": "ff",
+                                "length": 8,
+                                "padding": "left"
+                            }
+                        },
+                        {
+                            "index": {
+                                "content": "01",
+                                "length": 2,
+                                "padding": "left"
+                            },
+                            "value": {
+                                "content": "fe",
+                                "length": 8,
+                                "padding": "left"
+                            }
+                        },
+                        {
+                            "index": {
+                                "content": "02",
+                                "length": 2,
+                                "padding": "left"
+                            },
+                            "value": {
+                                "content": "f1",
+                                "length": 8,
+                                "padding": "left"
+                            }
+                        },
+                        {
+                            "index": {
+                                "content": "03",
+                                "length": 2,
+                                "padding": "left"
+                            },
+                            "value": {
+                                "content": "f7",
+                                "length": 8,
+                                "padding": "left"
+                            }
+                        }
+                    ],
+                    "matching_operator": "match-mapping",
+                    "compression_decompression_action": "mapping-sent"
+                },
+                {
+                    "id": "IPv6:Flow Label",
+                    "length": 20,
+                    "position": 1,
+                    "direction": "Bi",
+                    "target_value": [
+                        {
+                            "index": {
+                                "content": "00",
+                                "length": 2,
+                                "padding": "left"
+                            },
+                            "value": {
+                                "content": "00ef2d",
+                                "length": 20,
+                                "padding": "left"
+                            }
+                        },
+                        {
+                            "index": {
+                                "content": "01",
+                                "length": 2,
+                                "padding": "left"
+                            },
+                            "value": {
+                                "content": "0ffe2d",
+                                "length": 20,
+                                "padding": "left"
+                            }
+                        },
+                        {
+                            "index": {
+                                "content": "02",
+                                "length": 2,
+                                "padding": "left"
+                            },
+                            "value": {
+                                "content": "077777",
+                                "length": 20,
+                                "padding": "left"
+                            }
+                        },
+                        {
+                            "index": {
+                                "content": "03",
+                                "length": 2,
+                                "padding": "left"
+                            },
+                            "value": {
+                                "content": "0ff85f",
+                                "length": 20,
+                                "padding": "left"
+                            }
+                        }
+                    ],
+                    "matching_operator": "match-mapping",
+                    "compression_decompression_action": "mapping-sent"
+                },
+                {
+                    "id": "IPv6:Payload Length",
+                    "length": 16,
+                    "position": 1,
+                    "direction": "Bi",
+                    "target_value": {
+                        "content": "",
+                        "length": 0,
+                        "padding": "left"
+                    },
+                    "matching_operator": "ignore",
+                    "compression_decompression_action": "compute"
+                },
+                {
+                    "id": "IPv6:Next Header",
+                    "length": 8,
+                    "position": 1,
+                    "direction": "Bi",
+                    "target_value": {
+                        "content": "11",
+                        "length": 8,
+                        "padding": "left"
+                    },
+                    "matching_operator": "equal",
+                    "compression_decompression_action": "not-sent"
+                },
+                {
+                    "id": "IPv6:Hop Limit",
+                    "length": 8,
+                    "position": 1,
+                    "direction": "Bi",
+                    "target_value": {
+                        "content": "40",
+                        "length": 8,
+                        "padding": "left"
+                    },
+                    "matching_operator": "equal",
+                    "compression_decompression_action": "not-sent"
+                }  
+            ]
+        },
+        {
+            "id": {
+                "content": "01",
+                "length": 3,
+                "padding": "left"
+            },
+            "nature": "compression",
+            "field_descriptors": [
+                {
+                    "id": "IPv6:Version",
+                    "length": 4,
+                    "position": 1,
+                    "direction": "Bi",
+                    "target_value": {
+                        "content": "06",
+                        "length": 4,
+                        "padding": "left"
+                    },
+                    "matching_operator": "equal",
+                    "compression_decompression_action": "not-sent"
+                },
+                {
+                    "id": "IPv6:Traffic Class",
+                    "length": 8,
+                    "position": 1,
+                    "direction": "Bi",
+                    "target_value": {
+                        "content": "0f",
+                        "length": 4,
+                        "padding": "left"
+                    },
+                    "matching_operator": "MSB",
+                    "compression_decompression_action": "least-significant-bits"
+                },
+                {
+                    "id": "IPv6:Flow Label",
+                    "length": 20,
+                    "position": 1,
+                    "direction": "Bi",
+                    "target_value": [
+                        {
+                            "index": {
+                                "content": "00",
+                                "length": 2,
+                                "padding": "left"
+                            },
+                            "value": {
+                                "content": "00ef2d",
+                                "length": 20,
+                                "padding": "left"
+                            }
+                        },
+                        {
+                            "index": {
+                                "content": "01",
+                                "length": 2,
+                                "padding": "left"
+                            },
+                            "value": {
+                                "content": "0ffe2d",
+                                "length": 20,
+                                "padding": "left"
+                            }
+                        },
+                        {
+                            "index": {
+                                "content": "02",
+                                "length": 2,
+                                "padding": "left"
+                            },
+                            "value": {
+                                "content": "077777",
+                                "length": 20,
+                                "padding": "left"
+                            }
+                        },
+                        {
+                            "index": {
+                                "content": "03",
+                                "length": 2,
+                                "padding": "left"
+                            },
+                            "value": {
+                                "content": "0ff85f",
+                                "length": 20,
+                                "padding": "left"
+                            }
+                        }
+                    ],
+                    "matching_operator": "match-mapping",
+                    "compression_decompression_action": "mapping-sent"
+                },
+                {
+                    "id": "IPv6:Payload Length",
+                    "length": 16,
+                    "position": 1,
+                    "direction": "Bi",
+                    "target_value": {
+                        "content": "",
+                        "length": 0,
+                        "padding": "left"
+                    },
+                    "matching_operator": "ignore",
+                    "compression_decompression_action": "compute"
+                },
+                {
+                    "id": "IPv6:Next Header",
+                    "length": 8,
+                    "position": 1,
+                    "direction": "Bi",
+                    "target_value": {
+                        "content": "11",
+                        "length": 8,
+                        "padding": "left"
+                    },
+                    "matching_operator": "equal",
+                    "compression_decompression_action": "not-sent"
+                },
+                {
+                    "id": "IPv6:Hop Limit",
+                    "length": 8,
+                    "position": 1,
+                    "direction": "Bi",
+                    "target_value": {
+                        "content": "40",
+                        "length": 8,
+                        "padding": "left"
+                    },
+                    "matching_operator": "equal",
+                    "compression_decompression_action": "not-sent"
+                }
+            ]
+        },
+        {
+            "id": {
+                "content": "02",
+                "length": 3,
+                "padding": "left"
+            },
+            "nature": "compression",
+            "field_descriptors": [
+                {
+                    "id": "IPv6:Version",
+                    "length": 4,
+                    "position": 1,
+                    "direction": "Bi",
+                    "target_value": {
+                        "content": "06",
+                        "length": 4,
+                        "padding": "left"
+                    },
+                    "matching_operator": "equal",
+                    "compression_decompression_action": "not-sent"
+                },
+                {
+                    "id": "IPv6:Traffic Class",
+                    "length": 8,
+                    "position": 1,
+                    "direction": "Bi",
+                    "target_value": {
+                        "content": "",
+                        "length": 0,
+                        "padding": "left"
+                    },
+                    "matching_operator": "ignore",
+                    "compression_decompression_action": "value-sent"
+                },
+                {
+                    "id": "IPv6:Flow Label",
+                    "length": 20,
+                    "position": 1,
+                    "direction": "Bi",
+                    "target_value": [
+                        {
+                            "index": {
+                                "content": "00",
+                                "length": 2,
+                                "padding": "left"
+                            },
+                            "value": {
+                                "content": "00ef2d",
+                                "length": 20,
+                                "padding": "left"
+                            }
+                        },
+                        {
+                            "index": {
+                                "content": "01",
+                                "length": 2,
+                                "padding": "left"
+                            },
+                            "value": {
+                                "content": "0ffe2d",
+                                "length": 20,
+                                "padding": "left"
+                            }
+                        },
+                        {
+                            "index": {
+                                "content": "02",
+                                "length": 2,
+                                "padding": "left"
+                            },
+                            "value": {
+                                "content": "077777",
+                                "length": 20,
+                                "padding": "left"
+                            }
+                        },
+                        {
+                            "index": {
+                                "content": "03",
+                                "length": 2,
+                                "padding": "left"
+                            },
+                            "value": {
+                                "content": "0ff85f",
+                                "length": 20,
+                                "padding": "left"
+                            }
+                        }
+                    ],
+                    "matching_operator": "match-mapping",
+                    "compression_decompression_action": "mapping-sent"
+                },
+                {
+                    "id": "IPv6:Payload Length",
+                    "length": 16,
+                    "position": 1,
+                    "direction": "Bi",
+                    "target_value": {
+                        "content": "",
+                        "length": 0,
+                        "padding": "left"
+                    },
+                    "matching_operator": "ignore",
+                    "compression_decompression_action": "compute"
+                },
+                {
+                    "id": "IPv6:Next Header",
+                    "length": 8,
+                    "position": 1,
+                    "direction": "Bi",
+                    "target_value": {
+                        "content": "11",
+                        "length": 8,
+                        "padding": "left"
+                    },
+                    "matching_operator": "equal",
+                    "compression_decompression_action": "not-sent"
+                },
+                {
+                    "id": "IPv6:Hop Limit",
+                    "length": 8,
+                    "position": 1,
+                    "direction": "Bi",
+                    "target_value": {
+                        "content": "40",
+                        "length": 8,
+                        "padding": "left"
+                    },
+                    "matching_operator": "equal",
+                    "compression_decompression_action": "not-sent"
+                }
+            ]
+        },
+        {
+            "id": {
+                "content": "03",
+                "length": 3,
+                "padding": "left"
+            },
+            "nature": "compression",
+            "field_descriptors": [
+                {
+                    "id": "IPv6:Version",
+                    "length": 4,
+                    "position": 1,
+                    "direction": "Bi",
+                    "target_value": {
+                        "content": "06",
+                        "length": 4,
+                        "padding": "left"
+                    },
+                    "matching_operator": "equal",
+                    "compression_decompression_action": "not-sent"
+                },
+                {
+                    "id": "IPv6:Traffic Class",
+                    "length": 8,
+                    "position": 1,
+                    "direction": "Bi",
+                    "target_value": {
+                        "content": "",
+                        "length": 0,
+                        "padding": "left"
+                    },
+                    "matching_operator": "ignore",
+                    "compression_decompression_action": "value-sent"
+                },
+                {
+                    "id": "IPv6:Flow Label",
+                    "length": 20,
+                    "position": 1,
+                    "direction": "Bi",
+                    "target_value": {
+                        "content": "",
+                        "length": 0,
+                        "padding": "left"
+                    },
+                    "matching_operator": "ignore",
+                    "compression_decompression_action": "value-sent"
+                },
+                {
+                    "id": "IPv6:Payload Length",
+                    "length": 16,
+                    "position": 1,
+                    "direction": "Bi",
+                    "target_value": {
+                        "content": "",
+                        "length": 0,
+                        "padding": "left"
+                    },
+                    "matching_operator": "ignore",
+                    "compression_decompression_action": "compute"
+                },
+                {
+                    "id": "IPv6:Next Header",
+                    "length": 8,
+                    "position": 1,
+                    "direction": "Bi",
+                    "target_value": {
+                        "content": "11",
+                        "length": 8,
+                        "padding": "left"
+                    },
+                    "matching_operator": "equal",
+                    "compression_decompression_action": "not-sent"
+                },
+                {
+                    "id": "IPv6:Hop Limit",
+                    "length": 8,
+                    "position": 1,
+                    "direction": "Bi",
+                    "target_value": {
+                        "content": "40",
+                        "length": 8,
+                        "padding": "left"
+                    },
+                    "matching_operator": "equal",
+                    "compression_decompression_action": "not-sent"
+                }
+            ]
+        },
+        {
+            "id": {
+                "content": "04",
+                "length": 3,
+                "padding": "left"
+            },
+            "nature": "no-compression"
+        }
+    ]
+}
